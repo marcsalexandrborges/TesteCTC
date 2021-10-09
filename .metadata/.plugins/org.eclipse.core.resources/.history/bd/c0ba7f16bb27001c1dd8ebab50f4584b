@@ -1,0 +1,50 @@
+package Arquivo3;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+public class Test_3 {
+	
+	public static void main(String[]args)throws Exception{
+		String line, phrase = "";
+		int count = 0, maxCount =0;
+		ArrayList<String>phrases=new ArrayList<String>();
+		
+		//Abre o arquivo em modo de leitura
+		FileReader file = new FileReader("data.txt");
+		BufferedReader br = new BufferedReader(file);
+		
+		//Lê cada linha
+		while((line = br.readLine())!=null) {
+			String string[]=line.toLowerCase().split("([,.\\s]+)");
+			//Adicionando todas as palavras geradas na etapa anterior em palavras
+			for(String s:string) {
+				phrases.add(s);
+			}
+		}
+		//Determine a palavra mais repetida em um arquivo
+		for (int i =0;i<phrases.size();i++) {
+			count = 1;
+			//Conte cada palavra no arquivo e armazene-a em contagem variável
+			for(int j=i+1;j<phrases.size();j++) {
+				if (phrases.get(i).equals(phrases.get(j))) {
+					count++;
+				}
+			}
+			
+			//Se maxCount for menor que count, então armazene o valor de count em maxCount
+			//e palavra correspondente a palavra variável
+			if(count>maxCount) {
+				maxCount=count;
+				phrase=phrases.get(i);
+			}
+		}
+		System.out.println(" 50 Frases mais frequentes:"+phrase);
+		br.close();
+	}
+
+}
+
+
+

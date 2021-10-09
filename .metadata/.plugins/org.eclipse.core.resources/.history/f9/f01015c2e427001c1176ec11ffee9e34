@@ -1,0 +1,25 @@
+package Arquivo;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class Teste {
+	public static void main(String[]args) {
+		
+	}
+	
+	 public static boolean Write(String Caminho,String Texto){
+	        try {
+	            FileWriter arq = new FileWriter("arquivo.txt");
+	            PrintWriter gravarArq = new PrintWriter(arq);
+	            gravarArq.println("O combustivel tá caro O combustivel tá caro O combustivel tá caro O combustivel tá caro" );
+	            gravarArq.close();
+	            return true;
+	        }catch(IOException e){
+	            System.out.println(e.getMessage());
+	            return false;
+	        }
+	    }
+	}
+	

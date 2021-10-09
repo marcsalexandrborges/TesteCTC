@@ -1,0 +1,91 @@
+package Arquivo;
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+
+
+public class Test03 extends JFrame{
+		
+		JTextField TEXT1;
+		JTextField TEXT2;
+		
+		public Test03() {
+			
+			super("Arquivo Texto");
+			Container CONT = getContentPane();
+			
+			setLayout(null);
+			setSize(356, 240);
+			setVisible(true);
+			
+			JLabel ROTUL1 = new JLabel("Informe a frase a ser gravada:");
+			TEXT1 = new JTextField();
+			
+			JButton BOTAO1 = new JButton("Criar"); 
+			
+			JLabel ROTUL2 = new JLabel ("Leitura de frase gravada: ");
+			TEXT2 = new JTextField();
+			
+			CONT.add(ROTUL1);
+			CONT.add(TEXT1);
+			CONT.add(BOTAO1);
+			CONT.add(ROTUL2);
+			CONT.add(TEXT2);
+			
+			ROTUL1.setBounds(20,20,280,20);
+			TEXT1.setBounds(20,50,306,20);
+			
+			BOTAO1.setBounds(20,94,98,20);
+			
+			AdicionaBotao1 EVENTO1 = new AdicionaBotao1();
+			BOTAO1.addActionListener(EVENTO1);
+			
+			ROTUL2.setBounds(20,134,280,20);
+			TEXT2.setBounds(20,164,306,20);
+			TEXT2.setEditable(false);
+			
+		}
+			
+		private class AdicionaBotao1 implements ActionListener {	
+			public void actionPerformed(ActionEvent ae) {
+				
+				try {
+					FileWriter ARQTEXTO = new FileWriter("ARQTXT.XXX");
+					ARQTEXTO.write("");
+					ARQTEXTO.close();
+					setTitle("Arquivo Texto - Criado");
+					TEXT1.requestFocus();}
+				catch (IOException ioe) {
+					setTitle("Arquivo Texto - Erro");
+					TEXT1.requestFocus();
+				}
+				
+			}
+			
+		}
+				
+		public static void main(String args[])	{
+			javax.swing.SwingUtilities.invokeLater(
+			new Runnable() {
+				public void run() {
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					Test03 VISUAL = new Test03();
+					VISUAL.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				}
+			}
+			
+		);
+			
+			}
+		}
+		
+
+
+		
+		
+	
+
+

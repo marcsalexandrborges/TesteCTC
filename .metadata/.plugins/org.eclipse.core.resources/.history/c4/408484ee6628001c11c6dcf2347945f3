@@ -1,0 +1,58 @@
+package arquivo;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class test {
+	public static void main(String args[])
+    {
+        String nomearquivo = "arquivo.txt"; //Nome do arquivo que você salvou. Deve estar no mesmo diretorio do programa na hora de executar.
+        String pal="Às vezes, o caminho certo não é o mais fácil."; //Coloque aqui a frase ou palavra a ser buscada.
+
+        int comp = pal.length(); //Conta o comprimento da palavra/frase a ser buscada. Auxilia la na frente na hora de deletar a frase.
+        int saida = procura(comp,nomearquivo,pal);
+
+        System.out.println("Total de Ocorrencias: "+saida);
+    }
+
+    public static int procura(int comp, String nomearquivo, String pal)
+    {
+    int achou=0;
+    String linha;
+    String texto="";
+	 
+        try {
+        BufferedReader in = new BufferedReader(new FileReader(nomearquivo));
+            while ((linha = in.readLine()) != null)
+            {
+            texto=""+texto+linha; //Isso aqui serve para evitar falhas caso o arquivo tenha mais de uma linha. Ele agrupa todo o texto em uma String.
+	    }
+	      System.out.println("Conteudo: \n"+texto); //Mostra todo o conteudo do arquivo.
+
+            StringBuilder sb = new StringBuilder(texto);  //Criei essa String Builder para poder deletar a frase a medida que a busca vai sendo efetuada.
+            int posicao=0;
+				
+	    posicao = sb.indexOf(pal);//Se nao encontrar nada logo na primeira busca, encerra o programa mostrando ZERO no total de Ocorrencias.
+
+            while(posicao!=-1) //Criterio de parada
+            {
+            posicao = sb.indexOf(pal);
+            sb.delete(0,posicao+comp);
+            System.out.println(sb+"\n");//Apenas mostra as frases sendo cortadas.
+            achou++;
+            posicao = sb.indexOf(pal);
+            }
+         
+        in.close();
+        return achou;
+        } catch (Exception e) {
+          System.err.println("Erro na abertura do arquivo " + nomearquivo);
+         }
+       return achou;
+    }
+}
+
+
+	
+
+

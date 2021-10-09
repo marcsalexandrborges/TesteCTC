@@ -1,0 +1,56 @@
+ package Arquivo_S;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class Teste {
+		
+	public static void main(String[] args) {
+        String arq = "arquivo.txt";
+        
+        
+        //GRAVAÇÃO
+        String texto ="Sem pressão, sem diamantes.\" | \""
+                + "Mude o jogo , não deixe o jogo mudar você.\" | \""
+                + "Uma alma feliz é o melhor escudo para um mundo cruel.\" | \""
+                +"O tempo é a alma deste mundo.";
+        
+        if(Arquivo.Write(arq, texto))
+            System.out.println("Arquivo salvo com sucesso!");
+        else
+            System.out.println("Erro ao salvar o arquivo!");
+        
+       /* 
+        //LEITURA
+        String texto = Arquivo.Read(arq);
+        if(texto.isEmpty())
+            System.out.println("Erro ao ler do arquivo!");
+        else
+            System.out.println(texto);
+        */
+        
+        String ArqConfig = "conf.con";
+        /*
+        String nome = "Marcos";
+        String login = "admin";
+        String versao = "1.0.5";
+        
+        String print = nome+";"+login+";"+versao;
+        Arquivo.Write(ArqConfig,print);
+        
+        
+        String conteudo = Arquivo.Read(ArqConfig);
+        String c1 = conteudo.split(";")[0];
+        String c2 = conteudo.split(";")[1];
+        String c3 = conteudo.split(";")[2];
+        
+        System.out.println("Nome: "+c1);
+        System.out.println("Login: "+c2);
+        System.out.println("Versão: "+c3);
+        */
+    }
+    
+} 	    

@@ -1,0 +1,38 @@
+package Arquivo;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class Test03 {
+	
+	public static void main (String args[]) {
+		
+		
+		
+		scanner s = new Scanner(System.in);
+		
+		long frase, arquivo;
+		 
+
+	    System.out.printf("Informe as frases mais frequentes");
+	    arquivo = ler.nextLong();
+
+	    FileWriter arq = new FileWriter("d:\\frase.txt");
+	    PrintWriter gravarArq = new PrintWriter(arq);
+
+	    gravarArq.printf("+--Resultado--+%n");
+	    for (frase=1; frase<=50; i++) {
+	      gravarArq.printf("| %2d * %d = %2d |%n", frase, arquivo, frase*arquivo));
+	    }
+	    gravarArq.printf("+-------------+%n");
+
+	    arq.close();
+
+	    System.out.printf("\As frases foram %d gravada com sucesso em \"d:\\frases.txt\".\n", arquivo);
+	  }
+	
+	}
+
+
